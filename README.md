@@ -1,3 +1,6 @@
 # DumDLLInjector
 
 A dumb DLL Injector
+
+
+MADE ONLY FOR EDUCATIONAL PURPOSES ONLY
