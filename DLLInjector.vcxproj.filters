@@ -19,4 +19,30 @@
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="build\DLLInjector.exe" />
+    <None Include="build\DLLInjector.pdb" />
+    <None Include="DLLInjector\build\intermediates\vc143.pdb" />
+    <None Include="DLLInjector\build\intermediates\DLLInjector.tlog\CL.command.1.tlog" />
+    <None Include="DLLInjector\build\intermediates\DLLInjector.tlog\Cl.items.tlog" />
+    <None Include="DLLInjector\build\intermediates\DLLInjector.tlog\CL.read.1.tlog" />
+    <None Include="DLLInjector\build\intermediates\DLLInjector.tlog\CL.write.1.tlog" />
+    <None Include="DLLInjector\build\intermediates\DLLInjector.tlog\DLLInjector.lastbuildstate" />
+    <None Include="DLLInjector\build\intermediates\DLLInjector.tlog\link.command.1.tlog" />
+    <None Include="DLLInjector\build\intermediates\DLLInjector.tlog\link.read.1.tlog" />
+    <None Include="DLLInjector\build\intermediates\DLLInjector.tlog\link.secondary.1.tlog" />
+    <None Include="DLLInjector\build\intermediates\DLLInjector.tlog\link.write.1.tlog" />
+    <None Include="DLLInjector\build\intermediates\DLLInjector.exe.recipe" />
+    <None Include="DLLInjector\build\intermediates\DLLInjector.iobj" />
+    <None Include="DLLInjector\build\intermediates\DLLInjector.ipdb" />
+    <None Include=".gitattributes" />
+    <None Include=".gitignore" />
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="DLLInjector\build\intermediates\DLLInjector.log" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="DLLInjector\build\intermediates\DLLInjector.obj" />
+  </ItemGroup>
 </Project>
