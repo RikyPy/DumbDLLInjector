@@ -60,10 +60,44 @@ void InjectDLL(HANDLE hProcess, const std::string& dllPath) {
 }
 
 // Main function
-int main() {
+int main(int argc, char* argv[]) {
     std::string targetProcessName;
-    std::cout << "Enter the process name to inject into (e.g., notepad.exe): ";
-    std::getline(std::cin, targetProcessName);
+    std::string dllPath;
+
+    // Usage: injector.exe process_name file_path
+    if (argc == 3) {
+        targetProcessName = argv[1];
+        dllPath = argv[2];
+    }
+    else {
+        std::cout << "Usage: " << argv[0] << " process_name dll_file_path\n";
+        std::cout << "Or enter details interactively.\n";
+        std::cout << "Enter the process name to inject into (e.g., notepad.exe): ";
+        std::getline(std::cin, targetProcessName);
+        DWORD processID = GetProcessID(targetProcessName);
+        if (processID == 0) {
+            std::cerr << "Unable to find the target process." << std::endl;
+            return 1;
+        }
+
+        HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, processID);
+        if (!hProcess) {
+            std::cerr << "Unable to open the target process." << std::endl;
+            return 1;
+        }
+
+        dllPath = SelectDLLFile();
+        if (dllPath.empty()) {
+            std::cerr << "No DLL file selected." << std::endl;
+            CloseHandle(hProcess);
+            return 1;
+        }
+
+        InjectDLL(hProcess, dllPath);
+        std::cout << "DLL injected successfully!" << std::endl;
+        CloseHandle(hProcess);
+        return 0;
+    }
 
     DWORD processID = GetProcessID(targetProcessName);
     if (processID == 0) {
@@ -77,17 +111,8 @@ int main() {
         return 1;
     }
 
-    std::string dllPath = SelectDLLFile();
-    if (dllPath.empty()) {
-        std::cerr << "No DLL file selected." << std::endl;
-        CloseHandle(hProcess);
-        return 1;
-    }
-
-    // Inject the DLL
     InjectDLL(hProcess, dllPath);
     std::cout << "DLL injected successfully!" << std::endl;
-
     CloseHandle(hProcess);
     return 0;
 }
